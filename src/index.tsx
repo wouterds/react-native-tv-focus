@@ -34,11 +34,13 @@ export const focus = (tag: number | null | undefined) => {
     updateView(tag, 'RCTView', {
       hasTVPreferredFocus: true,
       tvFocusable: true,
+      accessible: true,
     });
   } else {
     updateView(tag, 'RCTTVView', {
       hasTVPreferredFocus: true,
       tvFocusable: true,
+      accessible: true,
     });
   }
 };
