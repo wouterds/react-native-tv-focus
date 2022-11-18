@@ -1,5 +1,5 @@
 {
-  "name": "react-native-tv-focus",
+  "name": "@wouterds/react-native-tv-focus",
   "version": "0.0.0",
   "description": "test",
   "main": "lib/commonjs/index",
