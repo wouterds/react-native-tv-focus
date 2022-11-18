@@ -14,7 +14,6 @@
     "ios",
     "cpp",
     "*.podspec",
-    "!lib/typescript/example",
     "!ios/build",
     "!android/build",
     "!android/gradle",
@@ -32,9 +31,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepare": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build",
-    "bootstrap": "yarn example && yarn install && yarn example pods"
+    "clean": "del-cli android/build"
   },
   "keywords": [
     "react-native",
@@ -83,7 +80,6 @@
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
   },
