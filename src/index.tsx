@@ -7,7 +7,7 @@ const LINKING_ERROR =
   '- You are not using Expo Go\n';
 
 const TvFocus = NativeModules.TvFocus
-  ? NativeModules.UIManager
+  ? NativeModules.TvFocus
   : new Proxy(
       {},
       {
