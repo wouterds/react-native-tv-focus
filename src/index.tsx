@@ -7,7 +7,7 @@ const LINKING_ERROR =
   '- You are not using Expo Go\n';
 
 const TvFocus = NativeModules.TvFocus
-  ? NativeModules.TvFocus
+  ? NativeModules.UIManager
   : new Proxy(
       {},
       {
@@ -17,6 +17,28 @@ const TvFocus = NativeModules.TvFocus
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return TvFocus.multiply(a, b);
-}
+const updateView = (
+  viewTag: number,
+  className: string,
+  props: Record<string, any>
+) => {
+  TvFocus.updateView(viewTag, className, props);
+};
+
+export const focus = (tag: number | null | undefined) => {
+  if (!tag) {
+    return;
+  }
+
+  if (Platform.OS === 'android') {
+    updateView(tag, 'RCTView', {
+      hasTVPreferredFocus: true,
+      tvFocusable: true,
+    });
+  } else {
+    updateView(tag, 'RCTTVView', {
+      hasTVPreferredFocus: true,
+      tvFocusable: true,
+    });
+  }
+};
