@@ -1,31 +1,28 @@
-# react-native-tv-focus
+# @wouterds/react-native-tv-focus
 
-A package to programatically focus views on tvOS & AndroidTV
+A package to programatically focus views on tvOS & AndroidTV.
 
 ## Installation
 
 ```sh
-npm install react-native-tv-focus
+# yarn
+yarn add @wouterds/react-native-tv-focus
+
+# npm
+npm install @wouterds/react-native-tv-focus
 ```
 
 ## Usage
 
 ```js
-import { multiply } from 'react-native-tv-focus';
+import { findNodeHandle } from 'react-native';
+import { focus } from '@wouterds/react-native-tv-focus';
 
 // ...
 
-const result = await multiply(3, 7);
+// get tag by ref from a UI element
+const tag = findNodeHandle(ref.current);
+
+// programatically force focus on tag
+focus(tag);
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
