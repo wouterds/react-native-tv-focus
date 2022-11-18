@@ -6,16 +6,19 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const TvFocus = NativeModules.TvFocus
-  ? NativeModules.TvFocus
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+const TvFocus =
+  Platform.OS === 'android'
+    ? NativeModules.TvFocus
+      ? NativeModules.TvFocus
+      : new Proxy(
+          {},
+          {
+            get() {
+              throw new Error(LINKING_ERROR);
+            },
+          }
+        )
+    : NativeModules.UIManager;
 
 const updateView = (
   viewTag: number,
