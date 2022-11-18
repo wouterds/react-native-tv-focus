@@ -36,7 +36,12 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "tv",
+    "tvos",
+    "androidtv",
+    "focus",
+    "tv-focus"
   ],
   "repository": "https://github.com/wouterds/react-native-tv-focus",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com> (https://github.com/wouterds)",
