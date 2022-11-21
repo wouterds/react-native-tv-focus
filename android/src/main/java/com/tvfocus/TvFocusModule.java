@@ -2,6 +2,7 @@ package com.tvfocus;
 
 import androidx.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -40,6 +41,20 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
       );
     } catch (IllegalViewOperationException ignore) {
       Log.w(this.getName(), "Failed updating view for tag: " + tag);
+    }
+  }
+
+  @ReactMethod
+  public void focus(int tag) {
+    try {
+      final View view = mContext.getNativeModule(UIManagerModule.class).resolveView(tag);
+      if (view != null) {
+        view.setFocusableInTouchMode(true);
+        view.setFocusable(true);
+        view.requestFocus();
+      }
+    } catch (IllegalViewOperationException ignore) {
+      Log.w(this.getName(), "Failed focusing view for tag: " + tag);
     }
   }
 }
