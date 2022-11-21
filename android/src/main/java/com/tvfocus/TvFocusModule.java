@@ -17,25 +17,7 @@ import com.facebook.react.uimanager.IllegalViewOperationException;
 public class TvFocusModule extends ReactContextBaseJavaModule {
   public static final String NAME = "TvFocus";
 
-  private UIManagerModule uiManager = null;
-  private UIImplementation uiImplementation = null;
   private final ReactApplicationContext mContext;
-
-  private UIManagerModule getUIManager() {
-    if (uiManager == null) {
-      uiManager = mContext.getNativeModule(UIManagerModule.class);
-    }
-
-    return uiManager;
-  }
-
-  private UIImplementation getUIImplementation() {
-    if (uiImplementation == null) {
-      uiImplementation = this.getUIManager().getUIImplementation();
-    }
-
-    return uiImplementation;
-  }
 
   public TvFocusModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -51,7 +33,7 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void updateView(int tag, String className, ReadableMap props) {
     try {
-      this.getUIImplementation().updateView(
+      mContext.getNativeModule(UIManagerModule.class).getUIImplementation().updateView(
         tag,
         className,
         props
