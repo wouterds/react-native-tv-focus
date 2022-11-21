@@ -19,11 +19,11 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
 
   private UIManagerModule uiManager = null;
   private UIImplementation uiImplementation = null;
-  private final ReactApplicationContext context;
+  private final ReactApplicationContext mContext;
 
   private UIManagerModule getUIManager() {
     if (uiManager == null) {
-      uiManager = context.getNativeModule(UIManagerModule.class);
+      uiManager = mContext.getNativeModule(UIManagerModule.class);
     }
 
     return uiManager;
@@ -39,7 +39,7 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
 
   public TvFocusModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    context = reactContext;
+    mContext = reactContext;
   }
 
   @Override
