@@ -40,7 +40,7 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
         props
       );
     } catch (IllegalViewOperationException ignore) {
-      Log.w(this.getName(), "Failed updating view for tag: " + tag);
+      Log.w(this.getName(), "Failed updating view with tag: " + tag);
     }
   }
 
@@ -52,9 +52,12 @@ public class TvFocusModule extends ReactContextBaseJavaModule {
         view.setFocusableInTouchMode(true);
         view.setFocusable(true);
         view.requestFocus();
+        Log.w(this.getName(), "Requesting focus for view with tag: " + tag);
+      } else {
+        Log.w(this.getName(), "Could not resolve view with tag: " + tag);
       }
     } catch (IllegalViewOperationException ignore) {
-      Log.w(this.getName(), "Failed focusing view for tag: " + tag);
+      Log.w(this.getName(), "Failed focusing view with tag: " + tag);
     }
   }
 }

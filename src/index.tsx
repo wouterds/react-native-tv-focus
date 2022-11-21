@@ -18,6 +18,7 @@ export const focus = (tag: number | null | undefined) => {
   }
 
   if (Platform.OS === 'android') {
+    NativeModules.TvFocus.focus(tag);
     updateView(tag, 'RCTView', {
       hasTVPreferredFocus: true,
       tvFocusable: true,
