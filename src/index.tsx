@@ -17,18 +17,22 @@ export const focus = (tag: number | null | undefined) => {
     return;
   }
 
-  if (Platform.OS === 'android') {
-    // NativeModules.TvFocus.focus(tag);
-    updateView(tag, 'RCTView', {
-      hasTVPreferredFocus: true,
-      tvFocusable: true,
-      accessible: true,
-    });
-  } else {
-    updateView(tag, 'RCTTVView', {
-      hasTVPreferredFocus: true,
-      tvFocusable: true,
-      accessible: true,
-    });
+  try {
+    if (Platform.OS === 'android') {
+      // NativeModules.TvFocus.focus(tag);
+      updateView(tag, 'RCTView', {
+        hasTVPreferredFocus: true,
+        tvFocusable: true,
+        accessible: true,
+      });
+    } else {
+      updateView(tag, 'RCTTVView', {
+        hasTVPreferredFocus: true,
+        tvFocusable: true,
+        accessible: true,
+      });
+    }
+  } catch (e) {
+    console.warn('[react-native-tv-focus]', 'Failed updating view', e);
   }
 };
